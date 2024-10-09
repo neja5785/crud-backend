@@ -100,3 +100,14 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+const cors = require('cors');
+
+// Allow requests from localhost:3000
+const corsOptions = {
+    origin: 'http://localhost:3000', // Replace this with the frontend URL when deployed
+    optionsSuccessStatus: 200
+};
+
+// Apply the CORS middleware with specific options
+app.use(cors(corsOptions));

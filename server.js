@@ -66,7 +66,7 @@ app.put('/students/:id', async (req, res) => {
              SET first_name = $1, last_name = $2, birth_date = $3, course = $4, is_erasmus = $5
              WHERE id = $6
              RETURNING *`,
-            [first_name, last_name, birth_date, course, is_erasmus, id]
+            [first_name, last_name , birth_date, course, is_erasmus, id]
         );
         if (result.rows.length === 0) {
             return res.status(404).json({ error: 'Student not found' });

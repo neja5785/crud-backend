@@ -10,7 +10,7 @@ const pool = new Pool({
     database: process.env.PGDATABASE, // Your database name
     password: process.env.PGPASSWORD, // PostgreSQL password
     port: process.env.PGPORT || 5432, // PostgreSQL port (default is 5432)
-    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+    ssl:  { rejectUnauthorized: false }
 });
 console.log('PGPASSWORD:', process.env.PGPASSWORD); // Log this to verify password
 

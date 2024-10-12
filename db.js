@@ -1,4 +1,5 @@
 // db.js
+require('dotenv').config();
 
 const { Pool } = require('pg');
 
@@ -9,8 +10,12 @@ const pool = new Pool({
     database: process.env.PGDATABASE, // Your database name
     password: process.env.PGPASSWORD, // PostgreSQL password
     port: process.env.PGPORT || 5432, // PostgreSQL port (default is 5432)
-    ssl: { rejectUnauthorized: false } // SSL setting for Azure PostgreSQL
+    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
 });
+console.log('PGPASSWORD:', process.env.PGPASSWORD); // Log this to verify password
+
+console.log('PGUSER:', process.env.PGUSER); // Log this to verify password
+
 
 // Export a query function that can be used to interact with the database
 module.exports = {
